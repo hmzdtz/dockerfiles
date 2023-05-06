@@ -31,6 +31,7 @@ RUN pip3 install pycrypto==2.6.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN useradd -m -G sudo -s /bin/bash $USERNAME
 RUN echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME
 RUN chmod 0440 /etc/sudoers.d/$USERNAME
+RUN echo "root:root" | chpasswd
 RUN echo "${USERNAME}:${PASSWORD}" | chpasswd
 
 # 创建aosp源码目录并设置其权限
