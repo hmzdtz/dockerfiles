@@ -3,7 +3,8 @@
 echo '------ upgrade system ------'
 sudo sed -i 's@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list
 sudo sed -i 's@//.*security.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list
-sudo apt-get update && apt-get upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 
 
 echo '------ install common ------'
@@ -13,10 +14,10 @@ sudo apt-get install -y zsh apt-file software-properties-common apt-transport-ht
 echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple" \
     | sudo tee /etc/pip.conf > /dev/null
 
-sudo apt-file update
 
+# android develop
+sudo apt-get install -y android-sdk-platform-tools-common
 
-# install repo
 echo '------ install repo ------'
 mkdir -p $HOME/bin
 curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o $HOME/bin/repo
@@ -58,6 +59,7 @@ echo 'source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' \
     | sudo tee -a /etc/zsh/zshrc > /dev/null
 echo 'source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh' \
     | sudo tee -a /etc/zsh/zshrc > /dev/null
+git config --global --add oh-my-zsh.hide-dirty 1
 
 
 # config env
@@ -76,3 +78,4 @@ echo 'NVM_NODEJS_ORG_MIRROR=https://mirrors.ustc.edu.cn/node/' \
     | sudo tee -a /etc/environment > /dev/null
 echo 'FNM_NODE_DIST_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/' \
     | sudo tee -a /etc/environment > /dev/null
+
