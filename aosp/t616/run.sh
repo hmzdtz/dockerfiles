@@ -2,7 +2,7 @@
 
 IMAGE_NAME="aosp:t616"
 CONTAINER_NAME="aosp-t616"
-SOURCE_PATH="/data/src/t616-aosp/t616"
+SOURCE_PATH="$HOME/src/aosp/t616"
 
 if [ ! -f /etc/apt/sources.list.d/docker.list ]; then
     sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -25,7 +25,7 @@ fi
 
 
 if [[ -z "$(docker inspect $CONTAINER_NAME 2> /dev/null | grep "\"Name\": \"/$CONTAINER_NAME\"")" ]]; then
-    docker run --name $CONTAINER_NAME --memory-swap=16G -v $SOURCE_PATH:/aosp -it $IMAGE_NAME
+    docker run --name $CONTAINER_NAME -v $SOURCE_PATH:/aosp -it $IMAGE_NAME
 else
     # docker stop $CONTAINER_NAME
     docker start -a -i $CONTAINER_NAME
