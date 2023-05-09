@@ -2,7 +2,7 @@
 
 IMAGE_NAME="aosp:t616"
 CONTAINER_NAME="aosp-t616"
-SOURCE_PATH="$HOME/src/aosp/t616"
+SOURCE_PATH="$HOME/src/aosp/t616/t616"
 
 if [ ! -f /etc/apt/sources.list.d/docker.list ]; then
     sudo apt-get remove docker docker-engine docker.io containerd runc

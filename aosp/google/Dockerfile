@@ -14,14 +14,16 @@ RUN apt-get update && \
     apt-transport-https ca-certificates \
     sudo vim psmisc \
     rsync bc cpio \
-    default-jdk build-essential ccache gcc-multilib g++-multilib \
-    gnupg flex bison zip curl xsltproc unzip fontconfig \
-    libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils zlib1g-dev \
-    libncurses5 libncurses5-dev libssl-dev \
+    \
+    git-core gnupg flex bison build-essential zip curl \
+    zlib1g-dev libc6-dev-i386 libncurses5 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils \
+    xsltproc unzip fontconfig \
+    \
     python3 python3-pip python python-pip \
     && apt-get -y upgrade \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
 
 RUN pip install pycrypto==2.6.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip3 install pycrypto==2.6.1 -i https://pypi.tuna.tsinghua.edu.cn/simple

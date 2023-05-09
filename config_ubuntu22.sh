@@ -8,8 +8,12 @@ sudo apt-get upgrade -y
 
 
 echo '------ install common ------'
-sudo apt-get install -y zsh apt-file software-properties-common apt-transport-https wget \
-    build-essential curl default-jdk vim-gtk3 git git-lfs python3 python-is-python3 python3-pip
+sudo apt-get install -y zsh apt-file software-properties-common apt-transport-https wget curl vim-gtk3 git git-lfs
+    
+
+echo '------ install build tools ------'
+sudo apt-get install -y build-essential default-jdk pkg-config python3 python-is-python3 python3-pip \
+    clang clangd clang-format llvm
 
 echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple" \
     | sudo tee /etc/pip.conf > /dev/null
