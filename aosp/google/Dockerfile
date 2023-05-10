@@ -24,10 +24,6 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-
-RUN pip install pycrypto==2.6.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
-RUN pip3 install pycrypto==2.6.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
-
 # ------------------------------------------
 
 # 创建普通用户和同名用户组并添加到sudo组中
@@ -46,7 +42,5 @@ WORKDIR "$SRC_PATH"
 
 USER "$USERNAME"
 
-ENV BUILD_ALL="/aosp/buildall_userdebug.sh E6555BD pac"
-ENV LUNCH_TARGET="ums9230_1h10_Natv-userdebug-gms"
-
 CMD ["/bin/bash"]
+
