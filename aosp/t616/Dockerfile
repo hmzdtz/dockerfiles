@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG USERNAME="android"
 ARG GROUPNAME="android"
@@ -75,4 +75,3 @@ ENV BUILD_ALL="/aosp/buildall_userdebug.sh $PROJECT pac"
 ENV LUNCH="lunch ums9230_1h10_Natv-userdebug-gms"
 
 CMD ["/bin/bash"]
-
