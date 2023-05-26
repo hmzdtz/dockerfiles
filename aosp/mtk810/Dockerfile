@@ -1,8 +1,8 @@
 FROM ubuntu:18.04
 
-ARG USERNAME="android"
-ARG GROUPNAME="android"
-ARG PASSWORD="android"
+ARG USERNAME="mtk810"
+ARG GROUPNAME="mtk810"
+ARG PASSWORD="mtk810"
 ARG SRC_PATH="/aosp"
 
 ARG TIMEZONE="Asia/Shanghai"
@@ -15,7 +15,7 @@ RUN sed -i 's@//.*archive.ubuntu.com@//mirrors.hit.edu.cn@g' /etc/apt/sources.li
 RUN sed -i 's@//.*security.ubuntu.com@//mirrors.hit.edu.cn@g' /etc/apt/sources.list
 
 # upgrade system
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 
 # change timezone
 RUN apt-get install -y tzdata \
@@ -26,8 +26,7 @@ RUN apt-get install -y tzdata \
 # install basic tools
 RUN apt-get install -y \
     apt-transport-https ca-certificates \
-    git \
-    sudo vim psmisc locales gnupg \
+    git sudo vim psmisc gnupg \
     rsync bc cpio zip unzip curl fontconfig xsltproc
 
 RUN apt-get install -y ccache flex bison 
@@ -37,11 +36,14 @@ RUN apt-get install -y \
 
 RUN apt-get install -y \
     libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils zlib1g-dev \
-    libncurses5 libncurses5-dev libssl-dev \
-    python python3
+    libncurses5 libncurses5-dev libssl-dev
+
+RUN apt-get install -y python python3
 
 RUN apt-get install -y libxml-opml-simplegen-perl libswitch-perl libfile-copy-recursive-perl
 
+# config locales
+RUN apt-get install -y locales
 RUN locale-gen en_US.UTF-8
 ENV LANG="en_US.UTF-8"
 ENV LANGUAGE="en_US:en"

@@ -1,8 +1,8 @@
 FROM ubuntu:18.04
 
-ARG USERNAME="android"
-ARG GROUPNAME="android"
-ARG PASSWORD="android"
+ARG USERNAME="t616"
+ARG GROUPNAME="t616"
+ARG PASSWORD="t616"
 ARG SRC_PATH="/aosp"
 
 ARG TIMEZONE="Asia/Shanghai"
